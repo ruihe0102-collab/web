@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>工業不動產專業服務｜瑞禾不動產</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans TC','Microsoft JhengHei',sans-serif;background:#fff;color:#1a2635;line-height:1.75;}
+:root{
+  --primary:#1C5739;
+  --primary-dark:#0e3520;
+  --accent:#EAB500;
+  --accent-dark:#c99a00;
+  --green-mid:#2a7a52;
+  --green-light:#AFC89D;
+  --bg:#f5f8f6;
+  --border:#deeae2;
+  --text:#1a2635;
+  --text-muted:#5a6a6a;
+  --white:#fff;
+  --radius:12px;
+  --shadow:0 2px 12px rgba(28,87,57,0.08);
+  --shadow-hover:0 10px 32px rgba(28,87,57,0.16);
+}
+
+/* ─── NAV ─── */
+nav{
+  position:sticky;top:0;z-index:200;
+  background:var(--primary);
+  height:68px;padding:0 5%;
+  display:flex;align-items:center;justify-content:space-between;
+  box-shadow:0 2px 12px rgba(0,0,0,0.22);
+}
+.nav-logo{height:42px;width:auto;display:block;}
+.nav-menu{display:flex;gap:0;list-style:none;}
+.nav-menu a{
+  display:block;padding:8px 16px;
+  color:rgba(255,255,255,0.82);
+  text-decoration:none;font-size:0.875rem;font-weight:500;
+  border-radius:6px;transition:all 0.18s;
+}
+.nav-menu a:hover{color:#fff;background:rgba(255,255,255,0.12);}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px;}
+.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all 0.2s;}
+
+/* ─── HERO ─── */
+.hero{
+  background:linear-gradient(140deg,var(--primary-dark) 0%,var(--primary) 45%,var(--green-mid) 100%);
+  color:#fff;padding:88px 5% 80px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;
+  top:-120px;right:-120px;width:500px;height:500px;
+  background:rgba(255,255,255,0.03);border-radius:50%;pointer-events:none;
+}
+.hero-label{
+  display:inline-block;
+  background:var(--accent);color:var(--primary);
+  font-size:0.75rem;font-weight:800;
+  padding:5px 18px;border-radius:50px;
+  letter-spacing:0.1em;margin-bottom:22px;
+}
+.hero h1{
+  color:#fff;font-size:clamp(1.9rem,4.5vw,3.2rem);
+  font-weight:800;line-height:1.28;margin-bottom:18px;
+  letter-spacing:-0.01em;
+}
+.hero p{
+  color:rgba(255,255,255,0.78);
+  font-size:clamp(0.95rem,1.8vw,1.08rem);
+  max-width:580px;margin:0 auto 40px;
+}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--accent);color:var(--primary);
+  font-size:0.95rem;font-weight:800;
+  padding:13px 30px;border-radius:50px;
+  text-decoration:none;
+  box-shadow:0 4px 18px rgba(234,181,0,0.4);
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(234,181,0,0.5);}
+.btn-outline{
+  display:inline-flex;align-items:center;gap:8px;
+  background:transparent;color:#fff;
+  font-size:0.95rem;font-weight:600;
+  padding:12px 26px;border-radius:50px;
+  border:1.5px solid rgba(255,255,255,0.4);
+  text-decoration:none;transition:all 0.2s;
+}
+.btn-outline:hover{background:rgba(255,255,255,0.1);border-color:#fff;}
+.hero-stats{
+  display:flex;justify-content:center;flex-wrap:wrap;
+  gap:16px;margin-top:56px;
+}
+.hero-stat{
+  background:rgba(255,255,255,0.09);
+  border:1px solid rgba(255,255,255,0.18);
+  border-radius:var(--radius);
+  padding:18px 26px;text-align:center;min-width:130px;
+}
+.hero-stat .n{display:block;font-size:1.75rem;font-weight:800;color:var(--accent);line-height:1;}
+.hero-stat .l{font-size:0.72rem;color:rgba(255,255,255,0.75);margin-top:6px;}
+
+/* ─── SECTION BASE ─── */
+.section{padding:72px 5%;}
+.section.alt{background:var(--bg);}
+.sec-label{
+  display:inline-block;
+  background:var(--green-light);color:var(--primary);
+  font-size:0.7rem;font-weight:700;
+  padding:3px 13px;border-radius:50px;
+  letter-spacing:0.08em;margin-bottom:10px;
+}
+.sec-title{font-size:clamp(1.35rem,2.8vw,1.9rem);color:var(--primary);font-weight:800;margin-bottom:8px;}
+.sec-sub{font-size:0.92rem;color:var(--text-muted);max-width:580px;margin-bottom:40px;line-height:1.7;}
+.divider{width:44px;height:3px;background:var(--accent);border-radius:2px;margin:10px 0 32px;}
+
+/* ─── ABOUT ─── */
+.about-kpis{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:16px;margin-bottom:48px;
+}
+.kpi-card{
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:var(--radius);padding:24px 18px;text-align:center;
+}
+.kpi-card .kn{display:block;font-size:1.8rem;font-weight:800;color:var(--accent);line-height:1;}
+.kpi-card .ku{font-size:0.9rem;font-weight:700;color:var(--accent);}
+.kpi-card .kl{font-size:0.75rem;color:var(--primary);margin-top:6px;line-height:1.5;font-weight:600;}
+
+.about-body{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-bottom:48px;}
+.about-text p{font-size:0.93rem;line-height:1.9;color:var(--text);margin-bottom:14px;}
+.about-text p:last-child{margin-bottom:0;}
+.blockquote{
+  border-left:3px solid var(--accent);
+  padding:14px 20px;
+  background:var(--bg);border-radius:0 10px 10px 0;
+  font-size:0.92rem;font-style:italic;
+  color:var(--primary);font-weight:600;
+  margin:20px 0 0;line-height:1.65;
+}
+.service-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
+.stag{
+  background:#e8f2ec;color:var(--primary);
+  font-size:0.8rem;font-weight:600;
+  padding:5px 14px;border-radius:6px;
+  border:1px solid var(--border);
+}
+.about-panel{
+  background:linear-gradient(160deg,var(--primary) 0%,var(--green-mid) 100%);
+  border-radius:16px;padding:36px 32px;color:#fff;
+}
+.about-panel h3{color:var(--accent);font-size:1.1rem;margin-bottom:20px;font-weight:700;}
+.svc-list{list-style:none;}
+.svc-list li{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:11px 0;border-bottom:1px solid rgba(255,255,255,0.1);
+  font-size:0.88rem;color:rgba(255,255,255,0.88);line-height:1.55;
+}
+.svc-list li:last-child{border-bottom:none;}
+.svc-check{
+  width:20px;height:20px;background:var(--accent);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;margin-top:1px;
+  color:var(--primary);font-size:0.65rem;font-weight:900;
+}
+
+/* ─── PERFORMANCE TABLE ─── */
+.perf-note{font-size:0.83rem;color:var(--text-muted);margin-bottom:18px;}
+.table-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border);}
+table{width:100%;border-collapse:collapse;min-width:580px;}
+thead tr{background:var(--primary);}
+thead th{
+  color:#fff;font-size:0.78rem;font-weight:700;
+  padding:12px 14px;text-align:left;white-space:nowrap;
+}
+tbody tr{border-bottom:1px solid #edf3ee;transition:background 0.15s;}
+tbody tr:last-child{border-bottom:none;}
+tbody tr:hover{background:var(--bg);}
+tbody td{font-size:0.84rem;padding:11px 14px;color:var(--text);vertical-align:middle;}
+tbody td:first-child{font-weight:600;color:var(--primary);white-space:nowrap;}
+.tag-buy{background:var(--accent);color:var(--primary);font-size:0.66rem;font-weight:800;padding:2px 9px;border-radius:20px;white-space:nowrap;}
+.tag-rent{background:#22c55e;color:#fff;font-size:0.66rem;font-weight:800;padding:2px 9px;border-radius:20px;white-space:nowrap;}
+
+/* ─── SERVICE STEPS ─── */
+.steps-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:20px;
+}
+.step-card{
+  background:#fff;border:1px solid var(--border);
+  border-radius:var(--radius);padding:26px 24px;
+  position:relative;overflow:hidden;
+  transition:transform 0.22s,box-shadow 0.22s;
+}
+.step-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover);}
+.step-card::before{
+  content:'';position:absolute;top:0;left:0;
+  width:3px;height:100%;background:var(--accent);
+}
+.step-num{
+  font-size:0.65rem;font-weight:800;color:var(--accent);
+  letter-spacing:0.12em;margin-bottom:6px;
+  display:flex;align-items:center;gap:8px;
+}
+.step-num::after{content:'';flex:1;height:1px;background:var(--border);}
+.step-keyword{
+  font-size:0.7rem;font-weight:700;color:var(--text-muted);
+  letter-spacing:0.1em;margin-bottom:8px;
+}
+.step-card h3{font-size:0.95rem;color:var(--primary);font-weight:700;margin-bottom:10px;line-height:1.4;}
+.step-card p{font-size:0.83rem;color:var(--text-muted);line-height:1.7;}
+
+/* ─── OVERVIEW ─── */
+.overview-stats{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  gap:16px;margin-bottom:36px;
+}
+.ov-card{
+  background:#fff;border:1px solid var(--border);
+  border-radius:var(--radius);padding:26px 18px;
+  text-align:center;box-shadow:var(--shadow);
+}
+.ov-card .on{font-size:2rem;font-weight:800;color:var(--accent);display:block;line-height:1;}
+.ov-card .ol{font-size:0.78rem;color:var(--primary);margin-top:8px;font-weight:600;}
+
+/* ─── PARKS GRID ─── */
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px;}
+.fbtn{
+  background:#e8f2ec;color:var(--primary);
+  border:1px solid var(--border);
+  font-size:0.82rem;font-weight:600;
+  padding:6px 16px;border-radius:50px;
+  cursor:pointer;transition:all 0.18s;
+}
+.fbtn.on,.fbtn:hover{background:var(--primary);color:#fff;border-color:var(--primary);}
+.parks-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:18px;}
+.park-card{
+  background:#fff;border-radius:var(--radius);overflow:hidden;
+  border:1px solid var(--border);box-shadow:var(--shadow);
+  transition:transform 0.22s,box-shadow 0.22s;
+  text-decoration:none;color:inherit;
+  display:flex;flex-direction:column;
+}
+.park-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover);}
+.park-head{
+  background:linear-gradient(135deg,var(--primary),var(--green-mid));
+  padding:18px 20px;
+}
+.park-head h3{color:#fff;font-size:0.95rem;font-weight:700;line-height:1.35;}
+.park-head small{color:rgba(255,255,255,0.65);font-size:0.72rem;margin-top:3px;display:block;}
+.park-body{padding:14px 18px 18px;flex:1;display:flex;flex-direction:column;}
+.park-meta{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:12px;}
+.pm{background:var(--bg);border-radius:7px;padding:7px 10px;}
+.pm .pl{font-size:0.62rem;color:#888;display:block;}
+.pm .pv{font-size:0.84rem;font-weight:700;color:var(--primary);}
+.park-wins{
+  display:flex;flex-wrap:wrap;gap:5px;
+  margin-top:auto;padding-top:10px;
+  border-top:1px solid var(--border);
+}
+.park-wins span{
+  font-size:0.68rem;background:#e8f2ec;
+  color:var(--primary);padding:3px 9px;
+  border-radius:20px;font-weight:600;
+}
+.park-foot{
+  display:block;text-align:center;
+  background:var(--accent);color:var(--primary);
+  font-size:0.82rem;font-weight:800;
+  padding:9px;border-radius:0 0 var(--radius) var(--radius);
+  transition:background 0.18s;
+}
+.park-foot:hover{background:var(--accent-dark);}
+
+/* ─── TEAM ─── */
+.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:20px;}
+.team-card{
+  background:#fff;border-radius:var(--radius);overflow:hidden;
+  text-align:center;border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  transition:transform 0.22s,box-shadow 0.22s;
+  text-decoration:none;color:inherit;display:block;
+}
+.team-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover);}
+.team-photo{
+  width:100%;aspect-ratio:3/4;
+  background:linear-gradient(160deg,var(--green-light) 0%,#c8dfc0 100%);
+  display:flex;align-items:center;justify-content:center;
+  font-size:3rem;color:var(--primary);
+}
+.team-photo img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;}
+.team-body{padding:14px 12px 16px;}
+.team-name{font-size:1rem;font-weight:700;color:var(--primary);margin-bottom:4px;}
+.team-role{
+  font-size:0.72rem;color:var(--primary);font-weight:600;
+  background:#e8f2ec;display:inline-block;
+  padding:2px 10px;border-radius:20px;margin-bottom:9px;
+}
+.team-parks-list{font-size:0.7rem;color:var(--text-muted);line-height:1.65;}
+.team-parks-list strong{color:var(--primary);font-weight:600;}
+
+/* ─── CSR ─── */
+.csr-box{
+  background:var(--bg);border-radius:var(--radius);
+  padding:28px 32px;border:1px solid var(--border);
+  margin-top:36px;
+}
+.csr-box h3{font-size:0.95rem;color:var(--primary);font-weight:700;margin-bottom:10px;}
+.csr-box p{font-size:0.88rem;line-height:1.85;color:var(--text);}
+
+/* ─── CONTACT ─── */
+#contact{background:var(--primary);text-align:center;}
+#contact .sec-label{background:rgba(255,255,255,0.15);color:#fff;}
+#contact .sec-title{color:#fff;}
+#contact .sec-sub{color:rgba(255,255,255,0.72);margin:0 auto 40px;max-width:480px;}
+.contact-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:16px;max-width:860px;margin:0 auto 36px;
+}
+.ci{
+  background:rgba(255,255,255,0.09);
+  border:1px solid rgba(255,255,255,0.16);
+  border-radius:var(--radius);padding:20px;
+}
+.ci-icon{font-size:1.3rem;margin-bottom:8px;}
+.ci-label{font-size:0.68rem;color:rgba(255,255,255,0.6);margin-bottom:4px;letter-spacing:0.07em;text-transform:uppercase;}
+.ci-val{font-size:0.95rem;font-weight:700;color:#fff;}
+.ci-val a{color:#fff;text-decoration:none;}
+.ci-val a:hover{color:var(--accent);}
+.contact-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--accent);color:var(--primary);
+  font-weight:800;font-size:1rem;
+  padding:14px 36px;border-radius:50px;
+  text-decoration:none;
+  box-shadow:0 4px 16px rgba(234,181,0,0.4);
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.contact-cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(234,181,0,0.5);}
+
+/* ─── FOOTER ─── */
+footer{
+  background:#0a2516;color:rgba(255,255,255,0.45);
+  text-align:center;padding:22px 5%;font-size:0.78rem;
+  line-height:1.8;
+}
+footer a{color:var(--green-light);text-decoration:none;}
+footer a:hover{color:var(--accent);}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+  .about-body{grid-template-columns:1fr;}
+}
+@media(max-width:680px){
+  .nav-burger{display:flex;}
+  .nav-menu{
+    display:none;position:absolute;top:68px;left:0;right:0;
+    background:var(--primary);flex-direction:column;
+    padding:16px 5%;gap:4px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.22);
+  }
+  .nav-menu.open{display:flex;}
+  nav{position:relative;}
+  .hero-stats{gap:10px;}
+  .hero-stat{padding:14px 18px;min-width:110px;}
+  .contact-grid{grid-template-columns:1fr;}
+  .csr-box{padding:22px 18px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="top">
+  <a href="#top"><img src="logo.png" alt="瑞禾不動產經紀股份有限公司" class="nav-logo"></a>
+  <button class="nav-burger" id="burger" aria-label="選單">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-menu" id="navMenu">
+    <li><a href="#about">關於我們</a></li>
+    <li><a href="#performance">媒合實績</a></li>
+    <li><a href="#services">服務內容</a></li>
+    <li><a href="#overview">服務園區</a></li>
+    <li><a href="#team">負責窗口</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-label">深耕中臺灣・工業地產專業服務</div>
+  <h1>19個產業園區<br>廠房・廠地 買賣租賃媒合</h1>
+  <p>深耕苗栗、臺中、彰化、南投四大行政區，由專業團隊協助您快速找到最適合的工業不動產</p>
+  <div class="hero-btns">
+    <a href="#overview" class="btn-primary">瀏覽所有園區</a>
+    <a href="#contact" class="btn-outline">聯絡我們</a>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><span class="n">19</span><span class="l">個產業園區</span></div>
+    <div class="hero-stat"><span class="n">6+</span><span class="l">成功媒合開發案</span></div>
+    <div class="hero-stat"><span class="n">6</span><span class="l">位專業窗口</span></div>
+    <div class="hero-stat"><span class="n">8年</span><span class="l">連續承接經濟部專案</span></div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <span class="sec-label">ABOUT US</span>
+  <h2 class="sec-title">關於瑞禾</h2>
+  <div class="divider"></div>
+  <p class="sec-sub">以團隊專業執行力，協助客戶排除行政門檻，迅速掌握投資契機</p>
+
+  <div class="about-kpis">
+    <div class="kpi-card"><span class="kn">8<span class="ku">年</span></span><div class="kl">連續承接經濟部<br>產業用地媒合案</div></div>
+    <div class="kpi-card"><span class="kn">6<span class="ku">+</span></span><div class="kl">成功媒合<br>產業用地開發案</div></div>
+    <div class="kpi-card"><span class="kn">16,869</span><div class="kl">m² 累計活化<br>閒置土地面積</div></div>
+    <div class="kpi-card"><span class="kn">4<span class="ku">縣市</span></span><div class="kl">服務範圍<br>苗中彰投</div></div>
+  </div>
+
+  <div class="about-body">
+    <div class="about-text">
+      <p>瑞禾不動產經紀股份有限公司自成立以來，始終秉持「專業、誠信、務實」的經營理念，長期深耕於工業地產與產業用地媒合領域。我們深知產業用地不僅是企業發展的基石，更是推動臺灣產業轉型與區域經濟成長的核心。</p>
+      <p>本團隊深耕中臺灣工業地產，以專業知識分工取代傳統單兵作戰，結合豐富實務經驗，專注於中部地區之產業運作。我們不只是單純的不動產仲介角色，更定位為產業發展之執行推手，致力於搭建行政部門、地主與廠商間之溝通平台。</p>
+      <p>在執行實績方面，本團隊近年累計成功媒合逾6件產業用地開發案，總計活化閒置土地面積達16,869平方公尺，曾協助優乃克、聯強國際、爭鮮、歐客佬國際等指標性企業完成設廠選址、用地取得或閒置廠區處分、招租等業務。</p>
+      <div class="blockquote">「在現行法令框架下，以團隊專業執行力協助客戶排除行政門檻，迅速掌握投資契機。」</div>
+      <div class="service-tags">
+        <span class="stag">苗栗縣</span>
+        <span class="stag">臺中市</span>
+        <span class="stag">彰化縣</span>
+        <span class="stag">南投縣</span>
+      </div>
+    </div>
+    <div class="about-panel">
+      <h3>服務範疇</h3>
+      <ul class="svc-list">
+        <li><span class="svc-check">✓</span><span>廠房・產業用地 買賣媒合</span></li>
+        <li><span class="svc-check">✓</span><span>廠房・廠地 租賃仲介</span></li>
+        <li><span class="svc-check">✓</span><span>企業設廠選址評估</span></li>
+        <li><span class="svc-check">✓</span><span>工業用地法規諮詢</span></li>
+        <li><span class="svc-check">✓</span><span>市地重劃開發媒合</span></li>
+        <li><span class="svc-check">✓</span><span>土地使用分區變更協助</span></li>
+        <li><span class="svc-check">✓</span><span>區段徵收與整合開發規劃</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="csr-box">
+    <h3>企業社會責任</h3>
+    <p>本公司將企業社會責任視為核心競爭力，秉持「人才為服務之本」理念，長期投入資源建構健康、平等且具激勵性之職場環境。已建置完整之內部控制與風險管理制度，所有專案執行人員均具備國家級專業證照，並另行委請專業法律顧問提供即時法務諮詢與審查支援。</p>
+  </div>
+</section>
+
+<!-- PERFORMANCE -->
+<section class="section alt" id="performance">
+  <span class="sec-label">TRACK RECORD</span>
+  <h2 class="sec-title">過往媒合實績</h2>
+  <div class="divider"></div>
+  <p class="perf-note">累計媒合 6 筆產業用地，活化面積達 1.69 公頃</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>成交日期</th>
+          <th>標的位置</th>
+          <th>交易類型</th>
+          <th>標的類型</th>
+          <th>面積 (m²)</th>
+          <th>客戶背景</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>112年4月</td><td>西屯區 協和段</td><td><span class="tag-buy">買賣</span></td><td>乙種工業用地</td><td>6,938</td><td>爭鮮 → 捷雅工程</td></tr>
+        <tr><td>112年7月</td><td>太平區 宜昌東路</td><td><span class="tag-buy">買賣</span></td><td>廠房</td><td>2,134</td><td>仟泰化工 → 銓聯食品</td></tr>
+        <tr><td>113年10月</td><td>大里區 練武段</td><td><span class="tag-buy">買賣</span></td><td>丁種建築用地</td><td>1,587</td><td>自然人 → 睿朱數位電商</td></tr>
+        <tr><td>113年12月</td><td>南屯區 工業區二十四路</td><td><span class="tag-rent">租賃</span></td><td>廠房</td><td>2,439</td><td>聯強國際 → 優乃克</td></tr>
+        <tr><td>114年6月</td><td>潭子區 大富路</td><td><span class="tag-rent">租賃</span></td><td>廠房</td><td>2,578</td><td>元貝實業 → 歐客佬國際</td></tr>
+        <tr><td>114年12月</td><td>南屯區 精科中路</td><td><span class="tag-rent">租賃</span></td><td>廠房</td><td>1,193</td><td>台灣勁越 → 啟新生技/振泰檢驗</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <span class="sec-label">OUR SERVICES</span>
+  <h2 class="sec-title">專業仲介服務內容</h2>
+  <div class="divider"></div>
+  <p class="sec-sub">從調查到媒合，八大具體執行做法，提供一條龍完整服務</p>
+  <div class="steps-grid">
+
+    <div class="step-card">
+      <div class="step-num">01 <span style="color:var(--text-muted);font-weight:400;font-size:0.85em;letter-spacing:0;">SURVEY</span></div>
+      <h3>閒置用地調查與資料庫建立</h3>
+      <p>針對苗中彰投四縣市之指定產業園區及潛在產業用地，進行實地勘查與調閱地籍資料，精確掌握土地利用現況。</p>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">02 <span style="color:var(--text-muted);font-weight:400;font-size:0.85em;letter-spacing:0;">INVESTOR</span></div>
+      <h3>潛在投資廠商開發</h3>
+      <p>採主動拜訪與通路引流雙軌策略，定期參與各大產業公會年會及聯誼活動，主動蒐集企業擴廠、回流投資意向。</p>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">03 <span style="color:var(--text-muted);font-weight:400;font-size:0.85em;letter-spacing:0;">MATCHING</span></div>
+      <h3>產業用地媒合與全程履歷管理</h3>
+      <p>將媒合作業區分仲介媒合、媒合成功、合法使用追蹤三大階段，建構資訊對稱之媒合環境，降低供需雙方溝通成本。</p>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">04 <span style="color:var(--text-muted);font-weight:400;font-size:0.85em;letter-spacing:0;">TRAINING</span></div>
+      <h3>政策法令教育訓練</h3>
+      <p>不定期舉辦人員教育訓練，由法律顧問與資深計畫主持人親自授課，確保團隊精準解讀政策指令與法令現況。</p>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">05 <span style="color:var(--text-muted);font-weight:400;font-size:0.85em;letter-spacing:0;">WINDOW</span></div>
+      <h3>專人專案單一聯絡窗口</h3>
+      <p>建立與中部各產業園區服務中心之單一窗口機制，即時掌握園區內廠商需求或土地釋出訊息。</p>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">06 <span style="color:var(--text-muted);font-weight:400;font-size:0.85em;letter-spacing:0;">ONE-STOP</span></div>
+      <h3>一站式專業諮詢協助</h3>
+      <p>整合法律顧問、特約地政士及專業經紀人，提供設廠法令諮詢、廠商進駐諮詢、土地媒合等全方位服務。</p>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">07 <span style="color:var(--text-muted);font-weight:400;font-size:0.85em;letter-spacing:0;">MARKETING</span></div>
+      <h3>多元行銷通路與資訊披露</h3>
+      <p>透過各大廣告平台、廣告刊物、現場帆布廣告及台灣工業用地供給與服務資訊網等管道，公開披露待媒合土地資訊。</p>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">08 <span style="color:var(--text-muted);font-weight:400;font-size:0.85em;letter-spacing:0;">CONTROL</span></div>
+      <h3>執行人員控管機制</h3>
+      <p>執行人員名單報備機關，統一佩戴專屬識別證進行現地訪視，確保執行程序之專業性與安全防範。</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="section alt" id="overview">
+  <span class="sec-label">SERVICE OVERVIEW</span>
+  <h2 class="sec-title">服務範圍一覽</h2>
+  <div class="divider"></div>
+  <p class="sec-sub">橫跨中臺灣四縣市，涵蓋各型工業園區，點選任一園區查看詳情與可用物件</p>
+
+  <div class="overview-stats">
+    <div class="ov-card"><span class="on">19</span><div class="ol">服務工業園區總數</div></div>
+    <div class="ov-card"><span class="on">3,580+</span><div class="ol">各園區廠商家數合計</div></div>
+    <div class="ov-card"><span class="on">6+</span><div class="ol">成功媒合產業開發案</div></div>
+    <div class="ov-card"><span class="on">16,869</span><div class="ol">m² 累計活化閒置土地</div></div>
+  </div>
+
+  <div class="filter-row">
+    <button class="fbtn on" onclick="fp('all',this)">全部</button>
+    <button class="fbtn" onclick="fp('苗栗',this)">苗栗縣</button>
+    <button class="fbtn" onclick="fp('台中',this)">臺中市</button>
+    <button class="fbtn" onclick="fp('彰化',this)">彰化縣</button>
+    <button class="fbtn" onclick="fp('南投',this)">南投縣</button>
+  </div>
+
+  <div class="parks-grid">
+    <!-- 苗栗 -->
+    <a href="park-toufen.html" class="park-card" data-c="苗栗"><div class="park-head"><h3>頭份產業園區</h3><small>苗栗縣</small></div><div class="park-body"><div class="park-meta"><div class="pm"><span class="pl">面積</span><span class="pv">93.8 公頃</span></div><div class="pm"><span class="pl">廠商家數</span><span class="pv">14 家</span></div></div><div class="park-wins"><span>曾甄茹</span><span>陳仁奕</span></div></div><span class="park-foot">查看園區詳情</span></a>
+    <a href="park-zhunan.html" class="park-card" data-c="苗栗"><div class="park-head"><h3>竹南產業園區</h3><small>苗栗縣</small></div><div class="park-body"><div class="park-meta"><div class="pm"><span class="pl">面積</span><span class="pv">76.3 公頃</span></div><div class="pm"><span class="pl">廠商家數</span><span class="pv">48 家</span></div></div><div class="park-wins"><span>張現傑</span><span>劉佳穎</span></div></div><span class="park-foot">查看園區詳情</span></a>
+    <a href="park-tongluo.html" class="park-card" data-c="苗栗"><div class="park-head"><h3>銅鑼產業園區</h3><small>苗栗縣</small></div><div class="park-body"><div class="park-meta"><div class="pm"><span class="pl">面積</span><span class="pv">50.8 公頃</span></div><div class="pm"><span class="pl">廠商家數</span><span class="pv">69 家</span></div></div><div class="park-wins"><span>張現傑</span><span>陳仁奕</span></div></div><span class="park-foot">查看園區詳情</span></a>
+    <!-- 台中 -->
+    <a href="park-taichung.html" class="park-card" data-c="台中"><div class="park-head"><h3>台中產業園區</h3><small>台中市</small></div><div class="park-body"><div class="park-meta"><div class="pm"><span class="pl">面積</span><span class="pv">583 公頃</span></div><div class="pm"><span class="pl">廠商家數</span><span class="pv">779 家</span></div></div><div class="park-wins"><span>張現傑</span><span>曾甄茹</span><span>李武燦</span></div></div><span class="park-foot">查看園區詳情</span></a>
+    <a href="park-dajia.html" class="park-card" data-c="台中"><div class="park-head"><h3>大甲幼獅產業園區</h3><small>台中市</small></div><div class="park-body"><div class="park-meta"><div class="pm"><span class="pl">面積</span><span class="pv">218.5 公頃</span></div><div class="pm"><span class="pl">廠商家數</span><span class="pv">230 家</span></div></div><div class="park-wins"><span>曾甄茹</span><span>劉佳穎</span></div></div><span class="park-foot">查看園區詳情</span></a>
+    <a href="park-taichungport-tech.html" class="park-card" data-c="台中"><div class="park-head"><h3>台中港科技產業園區</h3><small>台中市</small></div><div class="park-body"><div class="park-meta"><div class="pm"><span class="pl">面積</span><span class="pv">177.3 公頃</span></div><div class="pm"><span class="pl">廠商家數</span><span class="pv">70 家</span></div></div><div class="park-wins"><span>李武燦</span><span>張現傑</span></div></div><span class="park-foot">查看園區詳情</span></a>
+    <a href="park-taichungport-rel.html" class="park-card" data-c="台中"><div class="park-head"><h3>台中港關連產業園區</h3><small>台中市</small></div><div class="park-body"><div class="park-meta"><div class="pm"><span class="pl">面積</span><span class="pv">142.8 公頃</span></div><div class="pm"><span class="pl">廠商家數</span><span class="pv">99 家</span></div></div><div class="park-wins"><span>李武燦</span><span>陳仁奕</span></div></div><span class="park-foot">查看園區詳情</span></a>
+    <a href="park-dali.html" class="park-card" data-c="台中"><div class="park-head"><h3>大里產業園區</h3><small>台中市</small></div><div class="park-body"><div class="park-meta"><div class="pm"><span class="pl">面積</span><span class="pv">77.2 公頃</span></div><div class="pm"><span class="pl">廠商家數</span><span class="pv">243 家</span></div></div><div class="park-wins"><span>李武燦</span><span>羅長庚</span></div></div><span class="park-foot">查看園區詳情</span></a>
+    <a href="park-tanzi.html" class="park-card" data-c="台中"><div class="park-head"><h3>潭子科技產業園區</h3><small>台中市</small></div><div class="park-body"><div class="park-meta"><div class="pm"><span class="pl">面積</span><span class="pv">26.2 公頃</span></div><div class="pm"><span class="pl">廠商家數</span><span class="pv">51 家</span></div></div><div class="park-wins"><span>劉佳穎</span><span>李武燦</span></div></div><span class="park-foot">查看園區詳情</span></a>
+    <a href="park-software.html" class="park-card" data-c="台中"><div class="park-head"><h3>臺中軟體園區</h3><small>台中市</small></div><div class="park-body"><div class="park-meta"><div class="pm"><span class="pl">面積</span><span class="pv">5 公頃</span></div><div class="pm"><span class="pl">廠商家數</span><span class="pv">193 家</span></div></div><div class="park-wins"><span>待確認</span></div></div><span class="park-foot">查看園區詳情</span></a>
+    <!-- 彰化 -->
+    <a href="park-zhangbin.html" class="park-card" data-c="彰化"><div class="park-head"><h3>彰濱產業園區</h3><small>彰化縣</small></div><div class="park-body"><div class="park-meta"><div class="pm"><span class="pl">面積</span><span class="pv">3,643 公頃</span></div><div class="pm"><span class="pl">廠商家數</span><span class="pv">587 家</span></div></div><div class="park-wins"><span>曾甄茹</span><span>羅長庚</span><span>陳仁奕</span></div></div><span class="park-foot">查看園區詳情</span></a>
+    <a href="park-quanxing.html" class="park-card" data-c="彰化"><div class="park-head"><h3>全興產業園區</h3><small>彰化縣</small></div><div class="park-body"><div class="park-meta"><div class="pm"><span class="pl">面積</span><span class="pv">246 公頃</span></div><div class="pm"><span class="pl">廠商家數</span><span class="pv">106 家</span></div></div><div class="park-wins"><span>陳仁奕</span><span>羅長庚</span></div></div><span class="park-foot">查看園區詳情</span></a>
+    <a href="park-fangyuan.html" class="park-card" data-c="彰化"><div class="park-head"><h3>芳苑產業園區</h3><small>彰化縣</small></div><div class="park-body"><div class="park-meta"><div class="pm"><span class="pl">面積</span><span class="pv">162 公頃</span></div><div class="pm"><span class="pl">廠商家數</span><span class="pv">110 家</span></div></div><div class="park-wins"><span>羅長庚</span><span>劉佳穎</span></div></div><span class="park-foot">查看園區詳情</span></a>
+    <a href="park-fuxing.html" class="park-card" data-c="彰化"><div class="park-head"><h3>福興產業園區</h3><small>彰化縣</small></div><div class="park-body"><div class="park-meta"><div class="pm"><span class="pl">面積</span><span class="pv">43 公頃</span></div><div class="pm"><span class="pl">廠商家數</span><span class="pv">49 家</span></div></div><div class="park-wins"><span>陳仁奕</span><span>李武燦</span></div></div><span class="park-foot">查看園區詳情</span></a>
+    <a href="park-tianzhong.html" class="park-card" data-c="彰化"><div class="park-head"><h3>田中產業園區</h3><small>彰化縣</small></div><div class="park-body"><div class="park-meta"><div class="pm"><span class="pl">面積</span><span class="pv">28 公頃</span></div><div class="pm"><span class="pl">廠商家數</span><span class="pv">61 家</span></div></div><div class="park-wins"><span>羅長庚</span><span>李武燦</span></div></div><span class="park-foot">查看園區詳情</span></a>
+    <a href="park-pitou.html" class="park-card" data-c="彰化"><div class="park-head"><h3>埤頭產業園區</h3><small>彰化縣</small></div><div class="park-body"><div class="park-meta"><div class="pm"><span class="pl">面積</span><span class="pv">18 公頃</span></div><div class="pm"><span class="pl">廠商家數</span><span class="pv">20 家</span></div></div><div class="park-wins"><span>張現傑</span><span>羅長庚</span></div></div><span class="park-foot">查看園區詳情</span></a>
+    <a href="park-shetou.html" class="park-card" data-c="彰化"><div class="park-head"><h3>社頭織襪產業園區</h3><small>彰化縣</small></div><div class="park-body"><div class="park-meta"><div class="pm"><span class="pl">面積</span><span class="pv">7.5 公頃</span></div><div class="pm"><span class="pl">廠商家數</span><span class="pv">24 家</span></div></div><div class="park-wins"><span>張現傑</span><span>羅長庚</span></div></div><span class="park-foot">查看園區詳情</span></a>
+    <!-- 南投 -->
+    <a href="park-nangang.html" class="park-card" data-c="南投"><div class="park-head"><h3>南崗產業園區</h3><small>南投縣</small></div><div class="park-body"><div class="park-meta"><div class="pm"><span class="pl">面積</span><span class="pv">412 公頃</span></div><div class="pm"><span class="pl">廠商家數</span><span class="pv">204 家</span></div></div><div class="park-wins"><span>羅長庚</span><span>劉佳穎</span></div></div><span class="park-foot">查看園區詳情</span></a>
+    <a href="park-zhushan.html" class="park-card" data-c="南投"><div class="park-head"><h3>竹山產業園區</h3><small>南投縣</small></div><div class="park-body"><div class="park-meta"><div class="pm"><span class="pl">面積</span><span class="pv">22.1 公頃</span></div><div class="pm"><span class="pl">廠商家數</span><span class="pv">63 家</span></div></div><div class="park-wins"><span>曾甄茹</span><span>劉佳穎</span></div></div><span class="park-foot">查看園區詳情</span></a>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section" id="team">
+  <span class="sec-label">OUR TEAM</span>
+  <h2 class="sec-title">負責窗口</h2>
+  <div class="divider"></div>
+  <p class="sec-sub">6位專業業務經理，各自負責對應園區，直接聯絡最有效率</p>
+  <div class="team-grid">
+    <!-- 業務總監排第一 -->
+    <a href="person-zhang.html" class="team-card">
+      <div class="team-photo">👨‍💼</div>
+      <div class="team-body">
+        <div class="team-name">張現傑</div>
+        <div class="team-role">業務總監</div>
+        <div class="team-parks-list"><strong>負責園區：</strong><br>台中、台中港科技、竹南、銅鑼、埤頭、社頭織襪</div>
+      </div>
+    </a>
+    <a href="person-zeng.html" class="team-card">
+      <div class="team-photo">👩‍💼</div>
+      <div class="team-body">
+        <div class="team-name">曾甄茹</div>
+        <div class="team-role">業務經理</div>
+        <div class="team-parks-list"><strong>負責園區：</strong><br>彰濱、台中、大甲幼獅、頭份、竹山</div>
+      </div>
+    </a>
+    <a href="person-luo.html" class="team-card">
+      <div class="team-photo">👨‍💼</div>
+      <div class="team-body">
+        <div class="team-name">羅長庚</div>
+        <div class="team-role">業務經理</div>
+        <div class="team-parks-list"><strong>負責園區：</strong><br>彰濱、南崗、全興、芳苑、大里、田中、埤頭、社頭</div>
+      </div>
+    </a>
+    <a href="person-chen.html" class="team-card">
+      <div class="team-photo">👨‍💼</div>
+      <div class="team-body">
+        <div class="team-name">陳仁奕</div>
+        <div class="team-role">業務經理</div>
+        <div class="team-parks-list"><strong>負責園區：</strong><br>彰濱、全興、台中港關連、頭份、銅鑼、福興</div>
+      </div>
+    </a>
+    <a href="person-li.html" class="team-card">
+      <div class="team-photo">👨‍💼</div>
+      <div class="team-body">
+        <div class="team-name">李武燦</div>
+        <div class="team-role">業務經理</div>
+        <div class="team-parks-list"><strong>負責園區：</strong><br>台中、台中港科技、台中港關連、大里、福興、田中、潭子</div>
+      </div>
+    </a>
+    <a href="person-liu.html" class="team-card">
+      <div class="team-photo">👩‍💼</div>
+      <div class="team-body">
+        <div class="team-name">劉佳穎</div>
+        <div class="team-role">業務經理</div>
+        <div class="team-parks-list"><strong>負責園區：</strong><br>南崗、大甲幼獅、芳苑、竹南、潭子、竹山</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <span class="sec-label">CONTACT US</span>
+  <h2 class="sec-title">聯絡我們</h2>
+  <div class="divider"></div>
+  <p class="sec-sub">有廠房廠地買賣、租賃或諮詢需求，歡迎直接聯絡我們</p>
+  <div class="contact-grid">
+    <div class="ci"><div class="ci-icon">☎</div><div class="ci-label">公司電話</div><div class="ci-val"><a href="tel:0423803560">04-2380-3560</a></div></div>
+    <div class="ci"><div class="ci-icon">⊟</div><div class="ci-label">傳真</div><div class="ci-val">04-2380-3160</div></div>
+    <div class="ci"><div class="ci-icon">◎</div><div class="ci-label">公司地址</div><div class="ci-val" style="font-size:0.88rem">臺中市南屯區<br>益豐路四段91號</div></div>
+    <div class="ci"><div class="ci-icon">▶</div><div class="ci-label">主要聯絡人</div><div class="ci-val" style="font-size:0.9rem">張現傑<br><span style="font-size:0.75rem;font-weight:500;opacity:0.8">工業地產部業務總監</span><br><a href="tel:0953909777">0953-909777</a></div></div>
+    <div class="ci"><div class="ci-icon">✉</div><div class="ci-label">電子郵件</div><div class="ci-val" style="font-size:0.88rem">service@ruihe.com.tw</div></div>
+    <div class="ci" style="display:flex;flex-direction:column;align-items:center;">
+      <div class="ci-label" style="margin-bottom:10px;">LINE 官方帳號</div>
+      <div style="width:100px;height:100px;background:rgba(255,255,255,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:rgba(255,255,255,0.5);">QR</div>
+    </div>
+  </div>
+  <a href="tel:0423803560" class="contact-cta">立即致電詢問</a>
+</section>
+
+<footer>
+  <p>© 2025 瑞禾不動產經紀股份有限公司（RUIHE Real Estate）・中臺灣工業不動產專業服務</p>
+  <p>臺中市南屯區益豐路四段91號 ｜ Tel: 04-2380-3560 ｜ <a href="https://industrialrepro.github.io/website/#about" target="_blank" rel="noopener">公司官網</a></p>
+</footer>
+
+<script>
+document.getElementById('burger').addEventListener('click',()=>{
+  document.getElementById('navMenu').classList.toggle('open');
+});
+function fp(f,btn){
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.park-card').forEach(c=>{
+    c.style.display=(f==='all'||c.dataset.c===f)?'flex':'none';
+  });
+}
+</script>
+</body>
+</html>
